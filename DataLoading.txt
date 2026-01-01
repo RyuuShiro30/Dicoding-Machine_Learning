@@ -1,0 +1,85 @@
+#Data Loading
+1. CSV (Comma-Separated Values): Ekstensi: .csv
+Cara Load: pd.read_csv('file.csv')
+Deskripsi: CSV adalah format file yang sangat umum digunakan untuk 
+menyimpan data tabular. Setiap baris dalam file CSV mewakili satu record, 
+dan setiap nilai dalam baris dipisahkan oleh 
+koma (atau delimiter lainnya seperti titik koma).
+
+2. Excel Files
+Excel Files
+Ekstensi: .xls, .xlsx
+Cara Load: pd.read_excel('file.xlsx')
+Deskripsi: Excel adalah format file yang sering digunakan untuk spreadsheet 
+dan data tabular. Pandas dapat membaca berbagai sheet 
+dalam file Excel dan mengonversinya menjadi DataFrame.
+
+3. JSON (JavaScript Object Notation)
+Ekstensi: .json
+Cara Load: pd.read_json('file.json')
+Deskripsi: JSON adalah format file yang sering digunakan untuk menyimpan dan mentransfer data berbasis objek. Pandas dapat mengonversi JSON yang terstruktur dengan baik menjadi DataFrame.
+
+4. HTML
+Ekstensi: .html
+Cara Load: pd.read_html('file.html')
+Deskripsi: Pandas dapat membaca tabel data yang ada di dalam file HTML dan mengonversinya menjadi DataFrame. Ini sering digunakan untuk scraping data dari web.
+
+5. SQL Database
+Ekstensi: Tidak ada ekstensi khusus, data diambil dari database.
+Cara Load: pd.read_sql_query('SELECT * FROM table_name', connection)
+Deskripsi: Pandas dapat mengakses data yang disimpan dalam tabel SQL dan mengonversinya menjadi DataFrame, dengan koneksi ke database seperti SQLite, MySQL, PostgreSQL, dll.
+
+6. Parquet
+Ekstensi: .parquet
+Cara Load: pd.read_parquet('file.parquet')
+Deskripsi: Parquet adalah format file yang sangat efisien untuk menyimpan data kolumnar yang sering digunakan dalam big data analytics. Pandas mendukung pembacaan dan penulisan file Parquet.
+
+7. HDF5 (Hierarchical Data Format)
+Ekstensi: .h5, .hdf5
+Cara Load: pd.read_hdf('file.h5')
+Deskripsi: HDF5 adalah format file yang dirancang untuk menyimpan data besar dalam struktur yang terorganisir. Pandas dapat membaca dan menulis data ke file HDF5.
+
+8. Feather
+Ekstensi: .feather
+Cara Load: pd.read_feather('file.feather')
+Deskripsi: Feather adalah format file yang dioptimalkan untuk penyimpanan data tabular yang sangat cepat dan efisien, baik dalam hal pembacaan maupun penulisan.
+
+9. Stata
+Ekstensi: .dta
+Cara Load: pd.read_stata('file.dta')
+Deskripsi: Stata adalah software statistik, dan Pandas mendukung pembacaan file .dta yang digunakan oleh Stata.
+
+10. SAS (Statistical Analysis System)
+Ekstensi: .sas7bdat
+Cara Load: pd.read_sas('file.sas7bdat')
+Deskripsi: SAS adalah software analisis data yang digunakan untuk statistik. Pandas mendukung pembacaan file SAS.
+
+11. SPSS (Statistical Package for the Social Sciences)
+Ekstensi: .sav
+Cara Load: pd.read_spss('file.sav')
+Deskripsi: SPSS adalah software statistik yang sering digunakan dalam ilmu sosial. Pandas dapat membaca file .sav yang digunakan oleh SPSS.
+
+12. Pickle
+Ekstensi: .pkl
+Cara Load: pd.read_pickle('file.pkl')
+Deskripsi: Pickle adalah format serialisasi Python yang digunakan untuk menyimpan objek Python ke dalam file. Pandas dapat memuat objek DataFrame yang disimpan dalam format Pickle.
+
+13. ORC (Optimized Row Columnar)
+Ekstensi: .orc
+Cara Load: pd.read_orc('file.orc')
+Deskripsi: ORC adalah format file yang dirancang untuk penyimpanan data kolumnar yang digunakan dalam Hadoop. Pandas mendukung pembacaan file ORC.
+
+14. SQL Lite
+Ekstensi: .db atau .sqlite
+Cara Load: pd.read_sql_table('table_name', connection)
+Deskripsi: SQLite adalah database yang ringan dan file-based. Selain itu, Pandas juga dapat membaca tabel dari database SQLite langsung ke dalam DataFrame.
+
+15. LaTeX
+Ekstensi: .tex
+Cara Load: pd.read_stata('file.tex')
+Deskripsi: Pandas bisa membaca dan menulis tabel LaTeX yang sering digunakan dalam dokumen akademik untuk pemformatan tabel.
+
+16. Clipboard
+Ekstensi: Tidak ada ekstensi, data diambil dari clipboard.
+Cara Load: pd.read_clipboard()
+Deskripsi: Pandas dapat membaca data langsung dari clipboard (misalnya, hasil copy-paste dari spreadsheet) yang memudahkan pengambilan data cepat untuk analisis.
