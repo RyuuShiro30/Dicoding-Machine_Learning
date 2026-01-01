@@ -1,0 +1,5 @@
+Id,MSSubClass,MSZoning,LotFrontage,LotArea,Street,Alley,LotShape,LandContour,Utilities,PoolArea,PoolQC,Fence,MiscFeature
+1,20,RL,65,8450,Pave,,Reg,Lvl,AllPub,0,,MnPrv,
+2,60,RL,80,9600,Pave,,Reg,Lvl,AllPub,0,,GdWo,Shed
+3,70,RL,68,11250,Pave,Grvl,IR1,Lvl,AllPub,0,,,
+4,20,RH,60,9550,Pave,,Reg,Lvl,AllPub,738,Gd,MnPrv,Shed
