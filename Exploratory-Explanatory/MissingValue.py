@@ -34,4 +34,5 @@ missing_summary = missing_summary.sort_values(
     ascending=False
 )
 
+# Tampilkan ringkasan missing values
 print(missing_summary)
