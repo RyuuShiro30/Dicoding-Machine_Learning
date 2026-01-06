@@ -1,2 +1,2 @@
 #Learning About Machine Learning by Dicoding
-#Masih 25%
+#Masih 25% hehe
