@@ -1,10 +1,15 @@
+#=== IMPORT LIBRARIES ===
+
 import pandas as pd  # Mengimpor pustaka pandas untuk manipulasi dan analisis data
 import matplotlib.pyplot as plt  # Mengimpor pustaka matplotlib untuk visualisasi grafik
 from yellowbrick.cluster import KElbowVisualizer  # Mengimpor KElbowVisualizer untuk visualisasi metode Elbow
  
 from sklearn.cluster import KMeans, DBSCAN  # Mengimpor algoritma KMeans dan DBSCAN untuk clustering
 from sklearn.metrics import silhouette_score  # Mengimpor silhouette_score untuk mengevaluasi hasil clustering
+from sklearn.cluster import KMeans
 
+
+#=== DATA LOADING ===
 # Membaca dataset pelanggan mall dari URL dan menampilkan 5 baris pertama
 df = pd.read_csv('https://raw.githubusercontent.com/dicodingacademy/dicoding_dataset/main/ML%20Pemula/Mall_Customers.csv')
 df.head()
@@ -15,6 +20,7 @@ df.info()
 # Menampilkan statistik deskriptif dari dataset untuk kolom numerik
 df.describe()
 
+#=== EXPLORATORY DATA ANALYSIS ===
 # Menghitung distribusi gender dan menampilkan pie chart untuk visualisasi
 plt.figure(figsize=(7, 7))
 plt.pie(df['Gender'].value_counts(), labels=['Female', 'Male'], autopct='%1.1f%%', startangle=90)
@@ -69,3 +75,81 @@ for i in range(len(aix)):
   plt.text(i, aiy[i], aiy[i], ha='center', va='bottom')
  
 plt.show()
+
+#=== DATA SPLITTING ===
+# Mengambil kolom 'Annual Income (k$)' dan 'Spending Score (1-100)' dari dataset dan menyimpannya dalam array X
+X = df.iloc[:, [3, 4]].values
+ 
+# Menampilkan data yang diambil dalam format DataFrame dengan nama kolom yang sesuai
+print(pd.DataFrame(X, columns=['Annual Income (k$)', 'Spending Score (1-100)']))
+
+#=== ELBOW METHOD ===
+# Inisialisasi model KMeans tanpa parameter awal
+kmeans = KMeans()
+ 
+# Inisialisasi visualizer KElbow untuk menentukan jumlah cluster optimal
+visualizer = KElbowVisualizer(kmeans, k=(1, 10))
+ 
+# Fit visualizer dengan data untuk menemukan jumlah cluster optimal
+visualizer.fit(X)
+ 
+# Menampilkan grafik elbow untuk analisis
+visualizer.show()
+
+#=== CLUSTER MODELING WITH KMEANS ===
+# Inisialisasi dan melatih model KMeans dengan jumlah cluster = 4
+kmeans = KMeans(n_clusters=4, random_state=0)
+kmeans.fit(X)
+ 
+# Mendapatkan label cluster
+labels = kmeans.labels_
+ 
+# Mendapatkan jumlah cluster
+k = 4
+ 
+# Fungsi untuk analisis karakteristik cluster
+def analyze_clusters(X, labels, k):
+    print("Analisis Karakteristik Setiap Cluster:")
+    for cluster_id in range(k):
+        # Mengambil data untuk cluster saat ini
+        cluster_data = X[labels == cluster_id]
+ 
+        # Menghitung rata-rata untuk setiap fitur dalam cluster
+        mean_income = cluster_data[:, 0].mean()  # Rata-rata Annual Income
+        mean_spending = cluster_data[:, 1].mean()  # Rata-rata Spending Score
+ 
+        print(f"\nCluster {cluster_id + 1}:")
+        print(f"Rata-rata Annual Income (k$): {mean_income:.2f}")
+        print(f"Rata-rata Spending Score (1-100): {mean_spending:.2f}")
+ 
+# Analisis karakteristik setiap cluster
+analyze_clusters(X, labels, k)
+
+# Menentukan posisi centroid
+centroids = kmeans.cluster_centers_
+ 
+# Visualisasi cluster
+plt.figure(figsize=(12, 8))
+ 
+# Plot data
+plt.scatter(X[:, 0], X[:, 1], c=labels, cmap='viridis', s=50, alpha=0.6, edgecolors='w', marker='o')
+ 
+# Plot centroid
+plt.scatter(centroids[:, 0], centroids[:, 1], c='red', s=200, marker='X', label='Centroids')
+ 
+# Menambahkan label centroid pada plot
+for i, centroid in enumerate(centroids):
+    plt.text(centroid[0], centroid[1], f'Centroid {i+1}', color='red', fontsize=12, ha='center', va='center')
+ 
+# Menambahkan judul dan label
+plt.title('Visualisasi Cluster dengan Centroid')
+plt.xlabel('Annual Income (k$)')
+plt.ylabel('Spending Score (1-100)')
+plt.legend()
+ 
+plt.show()
+ 
+# Menampilkan nilai centroid
+print("Nilai Centroids:")
+for i, centroid in enumerate(centroids):
+    print(f"Centroid {i+1}: Annual Income = {centroid[0]:.2f}, Spending Score = {centroid[1]:.2f}")
