@@ -8,3 +8,9 @@ from sklearn.metrics import silhouette_score  # Mengimpor silhouette_score untuk
 # Membaca dataset pelanggan mall dari URL dan menampilkan 5 baris pertama
 df = pd.read_csv('https://raw.githubusercontent.com/dicodingacademy/dicoding_dataset/main/ML%20Pemula/Mall_Customers.csv')
 df.head()
+
+# Menampilkan informasi tentang dataset, termasuk jumlah baris, kolom, tipe data, dan jumlah nilai non-null
+df.info()
+
+# Menampilkan statistik deskriptif dari dataset untuk kolom numerik
+print(df.describe())
