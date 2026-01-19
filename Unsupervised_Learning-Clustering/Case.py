@@ -44,3 +44,28 @@ for i in range(len(x)):
   plt.text(i, y[i], y[i], ha='center', va='bottom')
  
 plt.show()
+
+# Mengelompokkan pendapatan tahunan pelanggan ke dalam kategori dan menghitung jumlah pelanggan di setiap kategori
+ai0_30 = df["Annual Income (k$)"][(df["Annual Income (k$)"] >= 0) & (df["Annual Income (k$)"] <= 30)]
+ai31_60 = df["Annual Income (k$)"][(df["Annual Income (k$)"] >= 31) & (df["Annual Income (k$)"] <= 60)]
+ai61_90 = df["Annual Income (k$)"][(df["Annual Income (k$)"] >= 61) & (df["Annual Income (k$)"] <= 90)]
+ai91_120 = df["Annual Income (k$)"][(df["Annual Income (k$)"] >= 91) & (df["Annual Income (k$)"] <= 120)]
+ai121_150 = df["Annual Income (k$)"][(df["Annual Income (k$)"] >= 121) & (df["Annual Income (k$)"] <= 150)]
+ 
+# Menyusun data untuk plotting
+aix = ["$ 0 - 30,000", "$ 30,001 - 60,000", "$ 60,001 - 90,000", "$ 90,001 - 120,000", "$ 120,001 - 150,000"]
+aiy = [len(ai0_30.values), len(ai31_60.values), len(ai61_90.values), len(ai91_120.values), len(ai121_150.values)]
+ 
+# Membuat bar chart untuk distribusi pendapatan tahunan pelanggan
+plt.figure(figsize=(15, 6))
+plt.bar(aix, aiy, color=['red', 'green', 'blue', 'cyan', 'yellow'])
+plt.title("Customer and Their Annual Income")
+plt.xlabel("Annual Income")
+plt.ylabel("Number of Customers")
+plt.xticks(rotation=45)  # Memutar label sumbu x agar lebih mudah dibaca
+ 
+# Menambahkan label jumlah pelanggan di atas setiap bar
+for i in range(len(aix)):
+  plt.text(i, aiy[i], aiy[i], ha='center', va='bottom')
+ 
+plt.show()
