@@ -1,0 +1,10 @@
+import pandas as pd  # Mengimpor pustaka pandas untuk manipulasi dan analisis data
+import matplotlib.pyplot as plt  # Mengimpor pustaka matplotlib untuk visualisasi grafik
+from yellowbrick.cluster import KElbowVisualizer  # Mengimpor KElbowVisualizer untuk visualisasi metode Elbow
+ 
+from sklearn.cluster import KMeans, DBSCAN  # Mengimpor algoritma KMeans dan DBSCAN untuk clustering
+from sklearn.metrics import silhouette_score  # Mengimpor silhouette_score untuk mengevaluasi hasil clustering
+
+# Membaca dataset pelanggan mall dari URL dan menampilkan 5 baris pertama
+df = pd.read_csv('https://raw.githubusercontent.com/dicodingacademy/dicoding_dataset/main/ML%20Pemula/Mall_Customers.csv')
+df.head()
