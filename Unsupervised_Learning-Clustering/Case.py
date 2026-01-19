@@ -13,4 +13,10 @@ df.head()
 df.info()
 
 # Menampilkan statistik deskriptif dari dataset untuk kolom numerik
-print(df.describe())
+df.describe()
+
+# Menghitung distribusi gender dan menampilkan pie chart untuk visualisasi
+plt.figure(figsize=(7, 7))
+plt.pie(df['Gender'].value_counts(), labels=['Female', 'Male'], autopct='%1.1f%%', startangle=90)
+plt.title('Gender Distribution')
+plt.show()
